@@ -5,42 +5,9 @@
              xmlns:vm="using:NavigationSample.ViewModels"
              xmlns:i="using:Avalonia.Xaml.Interactivity"
              xmlns:ia="using:Avalonia.Xaml.Interactions.Core"
+             xmlns:c="using:NavigationSample.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:NavigationManagerViewModel" x:CompileBindings="True"
              x:Class="NavigationSample.Views.NavigationManagerView">
-
-    <Panel>
-
-        <!-- SplitView -->
-        <DockPanel x:Name="SplitView">
-        
-            <Panel x:Name="Pane" DockPanel.Dock="Left" IsVisible="{Binding !!CurrentPane}">
-                <!-- Pane -->
-                <ContentControl Content="{Binding CurrentPane}"/>
-            </Panel>
-
-            <!-- Content -->
-            <Panel x:Name="Content">
-                <ContentControl Content="{Binding CurrentContent}"/>
-            </Panel>
-
-        </DockPanel>
-
-        <!-- Dialog -->
-        <Panel IsVisible="{Binding !!CurrentDialog}">
-            <Panel x:Name="Overlay" Background="#7F000000">
-                <i:Interaction.Behaviors>
-                    <ia:EventTriggerBehavior EventName="PointerPressed">
-                        <ia:InvokeCommandAction Command="{Binding CloseDialogCommand}" CommandParameter="{Binding CurrentDialog}" />
-                    </ia:EventTriggerBehavior>
-                </i:Interaction.Behaviors>
-            </Panel>
-            <Panel x:Name="Dialog" MaxWidth="500" MaxHeight="400">
-                <Border Background="WhiteSmoke" CornerRadius="4"/>
-                <ContentControl Content="{Binding CurrentDialog}"/>
-            </Panel>
-        </Panel>
-
-    </Panel>
-
+    <c:NavigationControl/>
 </UserControl>

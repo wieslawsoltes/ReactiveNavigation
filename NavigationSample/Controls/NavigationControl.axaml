@@ -1,0 +1,37 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="using:Avalonia.Xaml.Interactivity"
+        xmlns:ia="using:Avalonia.Xaml.Interactions.Core"
+        xmlns:c="using:NavigationSample.Controls"
+        xmlns:vm="using:NavigationSample.ViewModels"
+        x:DataType="vm:NavigationManagerViewModel" x:CompileBindings="True">
+    <Style Selector="c|NavigationControl">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <DockPanel x:Name="PART_SplitViewPanel">
+                        <Panel x:Name="PART_PanePanel" DockPanel.Dock="Left" IsVisible="{Binding !!CurrentPane}">
+                            <ContentControl Content="{Binding CurrentPane}"/>
+                        </Panel>
+                        <Panel x:Name="PART_ContentPanel">
+                            <ContentControl Content="{Binding CurrentContent}"/>
+                        </Panel>
+                    </DockPanel>
+                    <Panel x:Name="PART_DialogPanel" IsVisible="{Binding !!CurrentDialog}">
+                        <Panel x:Name="PART_OverlayPanel" Background="#7F000000">
+                            <i:Interaction.Behaviors>
+                                <ia:EventTriggerBehavior EventName="PointerPressed">
+                                    <ia:InvokeCommandAction Command="{Binding CloseDialogCommand}" CommandParameter="{Binding CurrentDialog}" />
+                                </ia:EventTriggerBehavior>
+                            </i:Interaction.Behaviors>
+                        </Panel>
+                        <Panel x:Name="PART_DialogPanel" MaxWidth="500" MaxHeight="400">
+                            <Border x:Name="PART_DialogBorder" Background="WhiteSmoke" CornerRadius="4"/>
+                            <ContentControl Content="{Binding CurrentDialog}"/>
+                        </Panel>
+                    </Panel>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
