@@ -6,16 +6,22 @@
         xmlns:c="using:NavigationSample.Controls"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="NavigationSample.Views.MainWindow"
+        x:Name="MainWindow"
+        Background="#FFFFFFFF"
+        Foreground="{DynamicResource SystemBaseHighColor}"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="PreferSystemChrome"
         Icon="/Assets/avalonia-logo.ico"
         Title="NavigationSample"
         WindowStartupLocation="CenterScreen"
         Width="900" Height="600"
         x:DataType="vm:MainWindowViewModel" x:CompileBindings="True">
-
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-    <c:NavigationControl DataContext="{Binding Navigation}"/>
-
+    <Panel Margin="{Binding #MainWindow.OffScreenMargin}">
+        <Panel Margin="{Binding #MainWindow.WindowDecorationMargin}">
+            <c:NavigationControl DataContext="{Binding Navigation}"/>
+        </Panel>
+    </Panel>
 </Window>
