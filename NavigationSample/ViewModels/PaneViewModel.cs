@@ -21,6 +21,9 @@ namespace NavigationSample.ViewModels
             
             DialogCommand = ReactiveCommand.Create(
                 () => NavigationManagerViewModel.Instance.NavigateDialog(new DialogViewModel()));
+
+            PopupCommand = ReactiveCommand.Create(
+                () => NavigationManagerViewModel.Instance.NavigatePopup(new PopupViewModel()));
         }
 
         public  ICommand GoBackContentCommand { get; }
@@ -32,5 +35,7 @@ namespace NavigationSample.ViewModels
         public  ICommand SettingsCommand { get; }
     
         public  ICommand DialogCommand { get; }
+
+        public  ICommand PopupCommand { get; }
     }
 }

@@ -11,7 +11,7 @@ namespace NavigationSample.ViewModels
         public MainWindowViewModel()
         {
             NavigationManagerViewModel.Register();
-            NavigationManagerViewModel.Instance.NavigatePane(new PaneViewModel());
+            NavigationManagerViewModel.Instance.NavigateLeftPane(new PaneViewModel());
             NavigationManagerViewModel.Instance.NavigateContent(new HomeViewModel());
             Navigation = NavigationManagerViewModel.Instance;
         }

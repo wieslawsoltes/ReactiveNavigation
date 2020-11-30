@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Windows.Input;
 using ReactiveUI;
+using NavigationSample.Models;
 
 namespace NavigationSample.ViewModels
 {
-    public class NavigationManagerViewModel : ViewModelBase
+    public class NavigationManagerViewModel : ViewModelBase, INavigationControl
     {
         public static NavigationManagerViewModel Instance { get; private set; }
 
@@ -14,104 +15,159 @@ namespace NavigationSample.ViewModels
             Instance = new NavigationManagerViewModel();
         }
 
-        private ObservableCollection<ViewModelBase> _contentStack;
-        private ObservableCollection<ViewModelBase> _dialogStack;
-        private ViewModelBase _currentPane;
-        private ViewModelBase _currentContent;
-        private ViewModelBase _currentDialog;
+        private ObservableCollection<object> _contentStack;
+        private ObservableCollection<object> _dialogStack;
+        private object _content;
+        private object _lefPane;
+        private object _rightPane;
+        private object _status;
+        private object _dialog;
+        private object _popup;
 
         private NavigationManagerViewModel()
         {
-            _contentStack = new ObservableCollection<ViewModelBase>();
-            _dialogStack = new ObservableCollection<ViewModelBase>();
-
-            ClosePaneCommand = ReactiveCommand.Create<ViewModelBase>(x => ClosePane(x));
-            
-            CloseContentCommand = ReactiveCommand.Create<ViewModelBase>(x => CloseContent(x));
-
-            CloseDialogCommand = ReactiveCommand.Create<ViewModelBase>(x => CloseDialog(x));
+            _contentStack = new ObservableCollection<object>();
+            _dialogStack = new ObservableCollection<object>();
+            CloseContentCommand = ReactiveCommand.Create(() => CloseContent());
+            CloseLeftPaneCommand = ReactiveCommand.Create(() => CloseLeftPane());
+            CloseRightPaneCommand = ReactiveCommand.Create(() => CloseRightPane());
+            CloseStatusCommand = ReactiveCommand.Create(() => CloseStatus());
+            CloseDialogCommand = ReactiveCommand.Create(() => CloseDialog());
         }
 
-        public ObservableCollection<ViewModelBase> ContentStack
+        public ObservableCollection<object> ContentStack
         {
             get => _contentStack;
             private set => this.RaiseAndSetIfChanged(ref _contentStack, value);
         }
 
-        public ObservableCollection<ViewModelBase> DialogStack
+        public ObservableCollection<object> DialogStack
         {
             get => _dialogStack;
             private set => this.RaiseAndSetIfChanged(ref _dialogStack, value);
         }
 
-        public ViewModelBase CurrentPane
+        public object Content
         {
-            get => _currentPane;
-            private set => this.RaiseAndSetIfChanged(ref _currentPane, value);
+            get => _content;
+            private set => this.RaiseAndSetIfChanged(ref _content, value);
         }
 
-        public ViewModelBase CurrentContent
+        public object LeftPane
         {
-            get => _currentContent;
-            private set => this.RaiseAndSetIfChanged(ref _currentContent, value);
+            get => _lefPane;
+            private set => this.RaiseAndSetIfChanged(ref _lefPane, value);
         }
 
-        public ViewModelBase CurrentDialog
+        public object RightPane
         {
-            get => _currentDialog;
-            private set => this.RaiseAndSetIfChanged(ref _currentDialog, value);
+            get => _rightPane;
+            private set => this.RaiseAndSetIfChanged(ref _rightPane, value);
         }
 
-        public  ICommand ClosePaneCommand { get; }
+        public object Status
+        {
+            get => _status;
+            private set => this.RaiseAndSetIfChanged(ref _status, value);
+        }
+
+        public object Dialog
+        {
+            get => _dialog;
+            private set => this.RaiseAndSetIfChanged(ref _dialog, value);
+        }
+
+        public object Popup
+        {
+            get => _popup;
+            private set => this.RaiseAndSetIfChanged(ref _popup, value);
+        }
+
+        public ICommand CloseContentCommand { get; }
         
-        public  ICommand CloseContentCommand { get; }
+        public ICommand CloseLeftPaneCommand { get; }
+
+        public ICommand CloseRightPaneCommand { get; }
+
+        public ICommand CloseStatusCommand { get; }
         
-        public  ICommand CloseDialogCommand { get; }
+        public ICommand CloseDialogCommand { get; }
+        public ICommand ClosePopupCommand { get; }
  
-        private void ClosePane(ViewModelBase pane)
+        public void CloseContent()
         {
-            CurrentPane = null;
+            _contentStack.Remove(_content);
+            Content = null;
         }
 
-        private void CloseContent(ViewModelBase content)
+        public void CloseLeftPane()
         {
-            _contentStack.Remove(content);
-            CurrentContent = null;
+            LeftPane = null;
         }
 
-        private void CloseDialog(ViewModelBase dialog)
+        public void CloseRightPane()
         {
-            _dialogStack.Remove(dialog);
-            CurrentDialog = null;
+            LeftPane = null;
         }
 
-        private void ClearContent()
+        public void CloseStatus()
+        {
+            Status = null;
+        }
+
+        public void CloseDialog()
+        {
+            _dialogStack.Remove(_dialog);
+            Dialog = null;
+        }
+
+        public void ClosePopup()
+        {
+            Popup = null;
+        }
+
+        public void ClearContent()
         {
             _contentStack.Clear();
-            CurrentContent = null;
+            Content = null;
         }
 
-        private void ClearDialog()
+        public void ClearDialog()
         {
             _dialogStack.Clear();
-            CurrentDialog = null;
+            Dialog = null;
         }
 
-        public void NavigatePane(ViewModelBase pane)
+        public void NavigateContent(object content)
         {
-            CurrentPane = pane;
-        }
-
-        public void NavigateContent(ViewModelBase content)
-        {
-            CurrentContent = content;
+            Content = content;
             _contentStack.Add(content);
         }
 
-        public void NavigateDialog(ViewModelBase dialog)
+        public void NavigateLeftPane(object pane)
         {
-            CurrentDialog = dialog;
+            LeftPane = pane;
+        }
+
+        public void NavigateRightPane(object pane)
+        {
+            RightPane = pane;
+        }
+
+        public void NavigateStatus(object pane)
+        {
+            Status = pane;
+        }
+
+        public void NavigateDialog(object dialog)
+        {
+            Dialog = dialog;
             _dialogStack.Add(dialog);
+        }
+
+        public void NavigatePopup(object popup)
+        {
+            Popup = popup;
         }
 
         public void GoBackContent()
@@ -128,7 +184,7 @@ namespace NavigationSample.ViewModels
                 var back = _contentStack.LastOrDefault();
                 if (back is { })
                 {
-                    CurrentContent = back;
+                    Content = back;
                 }
             }
         }
@@ -147,7 +203,7 @@ namespace NavigationSample.ViewModels
                 var back = _dialogStack.LastOrDefault();
                 if (back is { })
                 {
-                    CurrentDialog = back;
+                    Dialog = back;
                 }
             }
         }

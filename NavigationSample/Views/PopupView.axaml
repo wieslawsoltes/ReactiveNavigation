@@ -4,12 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:NavigationSample.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:DataType="vm:DialogViewModel" x:CompileBindings="True"
-             x:Class="NavigationSample.Views.DialogView">
-    <Panel>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Dialog" Margin="4" />
-            <Button Content="Popup" Command="{Binding PopupCommand}" Margin="4"/>
-        </StackPanel>
+             x:DataType="vm:PopupViewModel" x:CompileBindings="True"
+             x:Class="NavigationSample.Views.PopupView">
+    <Panel MinWidth="300" MinHeight="200">
+        <TextBlock Text="Popup" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Panel>
 </UserControl>
