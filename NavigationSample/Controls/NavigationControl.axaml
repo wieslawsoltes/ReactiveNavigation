@@ -12,8 +12,8 @@
         <SolidColorBrush x:Key="PopupOverlayBrush" Color="#7F000000" />
         <x:Double x:Key="DialogMaxWidth">500</x:Double>
         <x:Double x:Key="DialogMinWidth">400</x:Double>
-        <Thickness x:Key="DialogCornerRadius">4</Thickness>
-        <Thickness x:Key="PopupCornerRadius">4</Thickness>
+        <CornerRadius x:Key="DialogCornerRadius">4</CornerRadius>
+        <CornerRadius x:Key="PopupCornerRadius">4</CornerRadius>
     </Styles.Resources>
     <Style Selector="c|NavigationControl">
         <Setter Property="Template">
@@ -43,7 +43,9 @@
                                 </i:Interaction.Behaviors>
                             </Panel>
                             <Panel x:Name="PART_DialogContentPanel" MaxWidth="{DynamicResource DialogMaxWidth}" MaxHeight="{DynamicResource DialogMinWidth}">
-                                <Border x:Name="PART_DialogContentBorder" Background="{DynamicResource DialogBackgroundBrush}" CornerRadius="{DynamicResource DialogCornerRadius}"/>
+                                <Border x:Name="PART_DialogContentBorder"
+                                        Background="{DynamicResource DialogBackgroundBrush}"
+                                        CornerRadius="{DynamicResource DialogCornerRadius}"/>
                                 <ContentControl Content="{Binding Dialog}"/>
                             </Panel>
                         </Panel>
@@ -56,7 +58,9 @@
                                 </i:Interaction.Behaviors>
                             </Panel>
                             <Panel x:Name="PART_PopupContentPanel" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Border x:Name="PART_PopupContentBorder" Background="{DynamicResource PopupBackgroundBrush}" CornerRadius="{DynamicResource PopupCornerRadius}"/>
+                                <Border x:Name="PART_PopupContentBorder"
+                                        Background="{DynamicResource PopupBackgroundBrush}"
+                                        CornerRadius="{DynamicResource PopupCornerRadius}"/>
                                 <ContentControl Content="{Binding Popup}"/>
                             </Panel>
                         </Panel>
