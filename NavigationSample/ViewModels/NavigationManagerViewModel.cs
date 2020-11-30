@@ -132,7 +132,7 @@ namespace NavigationSample.ViewModels
                 }
             }
         }
-        
+
         public void GoBackDialog()
         {
             if (_dialogStack.Count <= 1)
