@@ -5,6 +5,7 @@ using System.Windows.Input;
 using ReactiveUI;
 using NavigationSample.Models;
 using System.Reactive.Linq;
+using DynamicData;
 
 namespace NavigationSample.ViewModels
 {
@@ -43,19 +44,16 @@ namespace NavigationSample.ViewModels
 				.ObserveOn(RxApp.MainThreadScheduler)
 				.Subscribe(_ => CanDialogNavigateBack = DialogStack.Count > 1);
 
-            _isContentEnabled = true;
-            _isDialogEnabled = true;
-
             this.WhenAnyValue(
                     x => x.Dialog,
                     x => x.Popup,
                     (dialog, popup) => dialog is null && popup is null)
                 .ObserveOn(RxApp.MainThreadScheduler)
-                .Select(x => IsContentEnabled = x);
+                .Subscribe(x => IsContentEnabled = x);
 
             this.WhenAnyValue(x => x.Popup)
                 .ObserveOn(RxApp.MainThreadScheduler)
-                .Select(x => IsDialogEnabled = x is null);
+                .Subscribe(x => IsDialogEnabled = x is null);
 
             CloseContentCommand = ReactiveCommand.Create<object>(x => CloseContent());
             CloseLeftPaneCommand = ReactiveCommand.Create<object>(x => CloseLeftPane());
