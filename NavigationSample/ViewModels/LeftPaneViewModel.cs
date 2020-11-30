@@ -22,7 +22,7 @@ namespace NavigationSample.ViewModels
             ToggleRightPaneCommand = ReactiveCommand.Create(
                 () => 
                 {
-                    if (NavigationManagerViewModel.Instance.Status is { })
+                    if (NavigationManagerViewModel.Instance.RightPane is { })
                     {
                         NavigationManagerViewModel.Instance.CloseRightPane();
                     }
