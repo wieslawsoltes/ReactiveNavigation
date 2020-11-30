@@ -8,10 +8,12 @@ namespace NavigationSample.ViewModels
         public LeftPaneViewModel()
         {
             GoBackContentCommand = ReactiveCommand.Create(
-                () => NavigationManagerViewModel.Instance.GoBackContent());
-            
+                () => NavigationManagerViewModel.Instance.GoBackContent(),
+                NavigationManagerViewModel.Instance.WhenAnyValue(x => x.CanContentNavigateBack));
+
             GoBackDialogCommand = ReactiveCommand.Create(
-                () => NavigationManagerViewModel.Instance.GoBackDialog());
+                () => NavigationManagerViewModel.Instance.GoBackDialog(),
+                NavigationManagerViewModel.Instance.WhenAnyValue(x => x.CanDialogNavigateBack));
 
             HomeCommand = ReactiveCommand.Create(
                 () => NavigationManagerViewModel.Instance.NavigateContent(new HomeViewModel()));

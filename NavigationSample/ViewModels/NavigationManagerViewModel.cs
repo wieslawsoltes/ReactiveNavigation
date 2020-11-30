@@ -1,8 +1,10 @@
 ﻿using System.Collections.ObjectModel;
+using System;
 using System.Linq;
 using System.Windows.Input;
 using ReactiveUI;
 using NavigationSample.Models;
+using System.Reactive.Linq;
 
 namespace NavigationSample.ViewModels
 {
@@ -17,6 +19,8 @@ namespace NavigationSample.ViewModels
 
         private ObservableCollection<object> _contentStack;
         private ObservableCollection<object> _dialogStack;
+        private bool _canContentNavigateBack;
+        private bool _canDialogNavigateBack;
         private object _content;
         private object _lefPane;
         private object _rightPane;
@@ -28,6 +32,15 @@ namespace NavigationSample.ViewModels
         {
             _contentStack = new ObservableCollection<object>();
             _dialogStack = new ObservableCollection<object>();
+
+			Observable.FromEventPattern(ContentStack, nameof(ContentStack.CollectionChanged))
+				.ObserveOn(RxApp.MainThreadScheduler)
+				.Subscribe(_ => CanContentNavigateBack = ContentStack.Count > 1);
+
+			Observable.FromEventPattern(DialogStack, nameof(ContentStack.CollectionChanged))
+				.ObserveOn(RxApp.MainThreadScheduler)
+				.Subscribe(_ => CanDialogNavigateBack = DialogStack.Count > 1);
+
             CloseContentCommand = ReactiveCommand.Create<object>(x => CloseContent());
             CloseLeftPaneCommand = ReactiveCommand.Create<object>(x => CloseLeftPane());
             CloseRightPaneCommand = ReactiveCommand.Create<object>(x => CloseRightPane());
@@ -46,6 +59,18 @@ namespace NavigationSample.ViewModels
         {
             get => _dialogStack;
             private set => this.RaiseAndSetIfChanged(ref _dialogStack, value);
+        }
+
+        public bool CanContentNavigateBack
+        {
+            get => _canContentNavigateBack;
+            private set => this.RaiseAndSetIfChanged(ref _canContentNavigateBack, value);
+        }
+
+        public bool CanDialogNavigateBack
+        {
+            get => _canDialogNavigateBack;
+            private set => this.RaiseAndSetIfChanged(ref _canDialogNavigateBack, value);
         }
 
         public object Content
