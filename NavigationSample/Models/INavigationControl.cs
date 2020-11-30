@@ -7,6 +7,10 @@ namespace NavigationSample.Models
     {
         ObservableCollection<object> ContentStack { get; }
         ObservableCollection<object> DialogStack { get; }
+        bool CanContentNavigateBack { get; }
+        bool CanDialogNavigateBack { get; }
+        bool IsContentEnabled { get; }
+        bool IsDialogEnabled { get; }
         object Content { get; }
         object LeftPane { get; }
         object RightPane { get; }

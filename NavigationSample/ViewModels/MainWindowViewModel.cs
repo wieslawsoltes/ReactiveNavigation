@@ -4,12 +4,12 @@
     {
         public MainWindowViewModel()
         {
-            NavigationManagerViewModel.Register();
-            NavigationManagerViewModel.Instance.NavigateLeftPane(new LeftPaneViewModel());
-            NavigationManagerViewModel.Instance.NavigateContent(new HomeViewModel());
-            Navigation = NavigationManagerViewModel.Instance;
+            NavigationManager.Register();
+            NavigationManager.Instance.NavigateLeftPane(new LeftPaneViewModel());
+            NavigationManager.Instance.NavigateContent(new HomeViewModel());
+            Navigation = NavigationManager.Instance;
         }
         
-        public NavigationManagerViewModel Navigation { get; }
+        public NavigationManager Navigation { get; }
     }
 }

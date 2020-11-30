@@ -8,19 +8,21 @@ using System.Reactive.Linq;
 
 namespace NavigationSample.ViewModels
 {
-    public class NavigationManagerViewModel : ViewModelBase, INavigationControl
+    public class NavigationManager : ReactiveObject, INavigationControl
     {
-        public static NavigationManagerViewModel Instance { get; private set; }
+        public static NavigationManager Instance { get; private set; }
 
         public static void Register()
         {
-            Instance = new NavigationManagerViewModel();
+            Instance = new NavigationManager();
         }
 
         private ObservableCollection<object> _contentStack;
         private ObservableCollection<object> _dialogStack;
         private bool _canContentNavigateBack;
         private bool _canDialogNavigateBack;
+        private bool _isContentEnabled;
+        private bool _isDialogEnabled;
         private object _content;
         private object _lefPane;
         private object _rightPane;
@@ -28,7 +30,7 @@ namespace NavigationSample.ViewModels
         private object _dialog;
         private object _popup;
 
-        private NavigationManagerViewModel()
+        private NavigationManager()
         {
             _contentStack = new ObservableCollection<object>();
             _dialogStack = new ObservableCollection<object>();
@@ -40,6 +42,20 @@ namespace NavigationSample.ViewModels
 			Observable.FromEventPattern(DialogStack, nameof(ContentStack.CollectionChanged))
 				.ObserveOn(RxApp.MainThreadScheduler)
 				.Subscribe(_ => CanDialogNavigateBack = DialogStack.Count > 1);
+
+            _isContentEnabled = true;
+            _isDialogEnabled = true;
+
+            this.WhenAnyValue(
+                    x => x.Dialog,
+                    x => x.Popup,
+                    (dialog, popup) => dialog is null && popup is null)
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Select(x => IsContentEnabled = x);
+
+            this.WhenAnyValue(x => x.Popup)
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Select(x => IsDialogEnabled = x is null);
 
             CloseContentCommand = ReactiveCommand.Create<object>(x => CloseContent());
             CloseLeftPaneCommand = ReactiveCommand.Create<object>(x => CloseLeftPane());
@@ -71,6 +87,18 @@ namespace NavigationSample.ViewModels
         {
             get => _canDialogNavigateBack;
             private set => this.RaiseAndSetIfChanged(ref _canDialogNavigateBack, value);
+        }
+
+        public bool IsContentEnabled
+        {
+            get => _isContentEnabled;
+            private set => this.RaiseAndSetIfChanged(ref _isContentEnabled, value);
+        }
+
+        public bool IsDialogEnabled
+        {
+            get => _isDialogEnabled;
+            private set => this.RaiseAndSetIfChanged(ref _isDialogEnabled, value);
         }
 
         public object Content
