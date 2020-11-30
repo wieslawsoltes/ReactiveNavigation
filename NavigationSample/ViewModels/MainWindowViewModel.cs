@@ -7,9 +7,10 @@
             NavigationManager.Register();
             NavigationManager.Instance.NavigateLeftPane(new LeftPaneViewModel());
             NavigationManager.Instance.NavigateContent(new HomeViewModel());
+            NavigationManager.Instance.NavigateStatus(new StatusViewModel());
             Navigation = NavigationManager.Instance;
         }
-        
+
         public NavigationManager Navigation { get; }
     }
 }
