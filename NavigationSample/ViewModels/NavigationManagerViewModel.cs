@@ -109,7 +109,7 @@ namespace NavigationSample.ViewModels
 
         public void CloseRightPane()
         {
-            LeftPane = null;
+            RightPane = null;
         }
 
         public void CloseStatus()

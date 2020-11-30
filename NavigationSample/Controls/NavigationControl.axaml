@@ -18,48 +18,50 @@
     <Style Selector="c|NavigationControl">
         <Setter Property="Template">
             <ControlTemplate>
-                <Panel>
-                    <DockPanel x:Name="PART_SplitViewPanel">
-                        <Panel x:Name="PART_LeftPanePanel" DockPanel.Dock="Left" IsVisible="{Binding !!LeftPane}">
-                            <ContentControl Content="{Binding LeftPane}"/>
+                <DockPanel x:Name="PART_MainPanel">
+                    <Panel x:Name="PART_StatusPanel" DockPanel.Dock="Bottom" IsVisible="{Binding !!Status}">
+                        <ContentControl Content="{Binding Status}"/>
+                    </Panel>
+                    <Panel x:Name="PART_SplitViewPanel">
+                        <DockPanel x:Name="PART_SplitViewDockPanel">
+                            <Panel x:Name="PART_LeftPanePanel" DockPanel.Dock="Left" IsVisible="{Binding !!LeftPane}">
+                                <ContentControl Content="{Binding LeftPane}"/>
+                            </Panel>
+                            <Panel x:Name="PART_RightPanePanel" DockPanel.Dock="Right" IsVisible="{Binding !!RightPane}">
+                                <ContentControl Content="{Binding RightPane}"/>
+                            </Panel>
+                            <Panel x:Name="PART_ContentPanel">
+                                <ContentControl Content="{Binding Content}"/>
+                            </Panel>
+                        </DockPanel>
+                        <Panel x:Name="PART_DialogPanel" IsVisible="{Binding !!Dialog}">
+                            <Panel x:Name="PART_OverlayDialogPanel" Background="{DynamicResource PopupOverlayBrush}">
+                                <i:Interaction.Behaviors>
+                                    <ia:EventTriggerBehavior EventName="PointerPressed">
+                                        <ia:InvokeCommandAction Command="{Binding CloseDialogCommand}" CommandParameter="{Binding Dialog}" />
+                                    </ia:EventTriggerBehavior>
+                                </i:Interaction.Behaviors>
+                            </Panel>
+                            <Panel x:Name="PART_DialogContentPanel" MaxWidth="{DynamicResource DialogMaxWidth}" MaxHeight="{DynamicResource DialogMinWidth}">
+                                <Border x:Name="PART_DialogContentBorder" Background="{DynamicResource DialogBackgroundBrush}" CornerRadius="{DynamicResource DialogCornerRadius}"/>
+                                <ContentControl Content="{Binding Dialog}"/>
+                            </Panel>
                         </Panel>
-                        <Panel x:Name="PART_RightPanePanel" DockPanel.Dock="Right" IsVisible="{Binding !!RightPane}">
-                            <ContentControl Content="{Binding RightPane}"/>
-                        </Panel>
-                        <Panel x:Name="PART_StatusPanel" DockPanel.Dock="Bottom" IsVisible="{Binding !!Status}">
-                            <ContentControl Content="{Binding Status}"/>
-                        </Panel>
-                        <Panel x:Name="PART_ContentPanel">
-                            <ContentControl Content="{Binding Content}"/>
-                        </Panel>
-                    </DockPanel>
-                    <Panel x:Name="PART_DialogPanel" IsVisible="{Binding !!Dialog}">
-                        <Panel x:Name="PART_OverlayDialogPanel" Background="{DynamicResource PopupOverlayBrush}">
-                            <i:Interaction.Behaviors>
-                                <ia:EventTriggerBehavior EventName="PointerPressed">
-                                    <ia:InvokeCommandAction Command="{Binding CloseDialogCommand}" CommandParameter="{Binding Dialog}" />
-                                </ia:EventTriggerBehavior>
-                            </i:Interaction.Behaviors>
-                        </Panel>
-                        <Panel x:Name="PART_DialogContentPanel" MaxWidth="{DynamicResource DialogMaxWidth}" MaxHeight="{DynamicResource DialogMinWidth}">
-                            <Border x:Name="PART_DialogContentBorder" Background="{DynamicResource DialogBackgroundBrush}" CornerRadius="{DynamicResource DialogCornerRadius}"/>
-                            <ContentControl Content="{Binding Dialog}"/>
+                        <Panel x:Name="PART_PopupPanel" IsVisible="{Binding !!Popup}">
+                            <Panel x:Name="PART_OverlayPopupPanel" Background="{DynamicResource PopupOverlayBrush}">
+                                <i:Interaction.Behaviors>
+                                    <ia:EventTriggerBehavior EventName="PointerPressed">
+                                        <ia:InvokeCommandAction Command="{Binding ClosePopupCommand}" CommandParameter="{Binding Popup}" />
+                                    </ia:EventTriggerBehavior>
+                                </i:Interaction.Behaviors>
+                            </Panel>
+                            <Panel x:Name="PART_PopupContentPanel" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Border x:Name="PART_PopupContentBorder" Background="{DynamicResource PopupBackgroundBrush}" CornerRadius="{DynamicResource PopupCornerRadius}"/>
+                                <ContentControl Content="{Binding Popup}"/>
+                            </Panel>
                         </Panel>
                     </Panel>
-                    <Panel x:Name="PART_PopupPanel" IsVisible="{Binding !!Popup}">
-                        <Panel x:Name="PART_OverlayPopupPanel" Background="{DynamicResource PopupOverlayBrush}">
-                            <i:Interaction.Behaviors>
-                                <ia:EventTriggerBehavior EventName="PointerPressed">
-                                    <ia:InvokeCommandAction Command="{Binding ClosePopupCommand}" CommandParameter="{Binding Popup}" />
-                                </ia:EventTriggerBehavior>
-                            </i:Interaction.Behaviors>
-                        </Panel>
-                        <Panel x:Name="PART_PopupContentPanel" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Border x:Name="PART_PopupContentBorder" Background="{DynamicResource PopupBackgroundBrush}" CornerRadius="{DynamicResource PopupCornerRadius}"/>
-                            <ContentControl Content="{Binding Popup}"/>
-                        </Panel>
-                    </Panel>
-                </Panel>
+                </DockPanel>
             </ControlTemplate>
         </Setter>
     </Style>

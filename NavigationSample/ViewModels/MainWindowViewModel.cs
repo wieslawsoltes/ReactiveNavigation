@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
-using ReactiveUI;
-
-namespace NavigationSample.ViewModels
+﻿namespace NavigationSample.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
         public MainWindowViewModel()
         {
             NavigationManagerViewModel.Register();
-            NavigationManagerViewModel.Instance.NavigateLeftPane(new PaneViewModel());
+            NavigationManagerViewModel.Instance.NavigateLeftPane(new LeftPaneViewModel());
             NavigationManagerViewModel.Instance.NavigateContent(new HomeViewModel());
             Navigation = NavigationManagerViewModel.Instance;
         }
