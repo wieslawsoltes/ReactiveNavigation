@@ -28,11 +28,12 @@ namespace NavigationSample.ViewModels
         {
             _contentStack = new ObservableCollection<object>();
             _dialogStack = new ObservableCollection<object>();
-            CloseContentCommand = ReactiveCommand.Create(() => CloseContent());
-            CloseLeftPaneCommand = ReactiveCommand.Create(() => CloseLeftPane());
-            CloseRightPaneCommand = ReactiveCommand.Create(() => CloseRightPane());
-            CloseStatusCommand = ReactiveCommand.Create(() => CloseStatus());
-            CloseDialogCommand = ReactiveCommand.Create(() => CloseDialog());
+            CloseContentCommand = ReactiveCommand.Create<object>(x => CloseContent());
+            CloseLeftPaneCommand = ReactiveCommand.Create<object>(x => CloseLeftPane());
+            CloseRightPaneCommand = ReactiveCommand.Create<object>(x => CloseRightPane());
+            CloseStatusCommand = ReactiveCommand.Create<object>(x => CloseStatus());
+            CloseDialogCommand = ReactiveCommand.Create<object>(x => CloseDialog());
+            ClosePopupCommand = ReactiveCommand.Create<object>(x => ClosePopup());
         }
 
         public ObservableCollection<object> ContentStack
@@ -92,6 +93,7 @@ namespace NavigationSample.ViewModels
         public ICommand CloseStatusCommand { get; }
         
         public ICommand CloseDialogCommand { get; }
+
         public ICommand ClosePopupCommand { get; }
  
         public void CloseContent()

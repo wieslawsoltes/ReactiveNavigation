@@ -4,7 +4,7 @@
         xmlns:ia="using:Avalonia.Xaml.Interactions.Core"
         xmlns:c="using:NavigationSample.Controls"
         xmlns:m="using:NavigationSample.Models"
-        x:DataType="m:INavigationControl" x:CompileBindings="True">
+        x:DataType="m:INavigationControl" x:CompileBindings="False">
     <Styles.Resources>
         <SolidColorBrush x:Key="DialogBackgroundBrush" Color="WhiteSmoke" />
         <SolidColorBrush x:Key="DialogOverlayBrush" Color="#7F000000" />
@@ -41,21 +41,21 @@
                                 </ia:EventTriggerBehavior>
                             </i:Interaction.Behaviors>
                         </Panel>
-                        <Panel x:Name="PART_DialogPanel" MaxWidth="{DynamicResource DialogMaxWidth}" MaxHeight="{DynamicResource DialogMinWidth}">
-                            <Border x:Name="PART_DialogBorder" Background="{DynamicResource DialogBackgroundBrush}" CornerRadius="{DynamicResource DialogCornerRadius}"/>
+                        <Panel x:Name="PART_DialogContentPanel" MaxWidth="{DynamicResource DialogMaxWidth}" MaxHeight="{DynamicResource DialogMinWidth}">
+                            <Border x:Name="PART_DialogContentBorder" Background="{DynamicResource DialogBackgroundBrush}" CornerRadius="{DynamicResource DialogCornerRadius}"/>
                             <ContentControl Content="{Binding Dialog}"/>
                         </Panel>
                     </Panel>
                     <Panel x:Name="PART_PopupPanel" IsVisible="{Binding !!Popup}">
-                        <Panel x:Name="PART_OverlayPopupPanel" Background="{DynamicResource DialogOverlayBrush}">
+                        <Panel x:Name="PART_OverlayPopupPanel" Background="{DynamicResource PopupOverlayBrush}">
                             <i:Interaction.Behaviors>
                                 <ia:EventTriggerBehavior EventName="PointerPressed">
                                     <ia:InvokeCommandAction Command="{Binding ClosePopupCommand}" CommandParameter="{Binding Popup}" />
                                 </ia:EventTriggerBehavior>
                             </i:Interaction.Behaviors>
                         </Panel>
-                        <Panel x:Name="PART_PopupPanel">
-                            <Border x:Name="PART_PopupBorder" Background="{DynamicResource PopupBackgroundBrush}" CornerRadius="{DynamicResource PopupCornerRadius}"/>
+                        <Panel x:Name="PART_PopupContentPanel" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Border x:Name="PART_PopupContentBorder" Background="{DynamicResource PopupBackgroundBrush}" CornerRadius="{DynamicResource PopupCornerRadius}"/>
                             <ContentControl Content="{Binding Popup}"/>
                         </Panel>
                     </Panel>
