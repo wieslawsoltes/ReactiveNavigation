@@ -8,10 +8,10 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.999-cibuild0012072-beta" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.999-cibuild0012072-beta" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.999-cibuild0012072-beta" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.999-cibuild0012072-beta" />
-    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.0-preview6" />
+    <PackageReference Include="Avalonia" Version="0.10.999-cibuild0012149-beta" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.999-cibuild0012149-beta" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.999-cibuild0012149-beta" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.999-cibuild0012149-beta" />
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.0-build20201130-02" />
   </ItemGroup>
 </Project>
