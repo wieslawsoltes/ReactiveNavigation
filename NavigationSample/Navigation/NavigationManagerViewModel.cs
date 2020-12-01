@@ -9,106 +9,95 @@ namespace NavigationSample.ViewModels
     {
         public static NavigationManagerViewModel Instance { get; private set; }
 
-        public static void Register()
+        public static void Register(INavigationControl control, INavigationStack stack)
         {
-            Instance = new NavigationManagerViewModel();
+            Instance = new NavigationManagerViewModel(control, stack);
         }
 
-        private INavigationControl _control;
-        private INavigationStack _stack;
-
-        private NavigationManagerViewModel()
+        private NavigationManagerViewModel(INavigationControl control, INavigationStack stack)
         {
-            Control = new NavigationControlViewModel(this);
-            Stack = new NavigationStackViewModel();
+            Control = control;
+            Stack = stack;
         }
 
-        public INavigationControl Control
-        {
-            get => _control;
-            set => this.RaiseAndSetIfChanged(ref _control, value);
-        }
+        public INavigationControl Control { get; }
 
-        public INavigationStack Stack
-        {
-            get => _stack;
-            set => this.RaiseAndSetIfChanged(ref _stack, value);
-        }
+        public INavigationStack Stack { get; }
 
         public void CloseContent()
         {
-            Stack.ContentStack.Remove(_control.Content);
-            _control.Content = null;
+            Stack.ContentStack.Remove(Control.Content);
+            Control.Content = null;
         }
 
         public void CloseLeftPane()
         {
-            _control.LeftPane = null;
+            Control.LeftPane = null;
         }
 
         public void CloseRightPane()
         {
-            _control.RightPane = null;
+            Control.RightPane = null;
         }
 
         public void CloseStatus()
         {
-            _control.Status = null;
+            Control.Status = null;
         }
 
         public void CloseDialog()
         {
-            Stack.DialogStack.Remove(_control.Dialog);
-            _control.Dialog = null;
+            Stack.DialogStack.Remove(Control.Dialog);
+            Control.Dialog = null;
         }
 
         public void ClosePopup()
         {
-            _control.Popup = null;
+            Control.Popup = null;
         }
 
         public void ClearContent()
         {
             Stack.ContentStack.Clear();
-            _control.Content = null;
+            Control.Content = null;
         }
 
         public void ClearDialog()
         {
             Stack.DialogStack.Clear();
-            _control.Dialog = null;
+            Control.Dialog = null;
         }
 
         public void NavigateContent(object content)
         {
-            _control.Content = content;
+            Control.Content = content;
             Stack.ContentStack.Add(content);
         }
 
         public void NavigateLeftPane(object pane)
         {
-            _control.LeftPane = pane;
+            Control.LeftPane = pane;
         }
 
         public void NavigateRightPane(object pane)
         {
-            _control.RightPane = pane;
+            Control.RightPane = pane;
         }
 
         public void NavigateStatus(object pane)
         {
-            _control.Status = pane;
+            Control.Status = pane;
         }
 
         public void NavigateDialog(object dialog)
         {
-            _control.Dialog = dialog;
+            Control.Dialog = dialog;
             Stack.DialogStack.Add(dialog);
         }
 
         public void NavigatePopup(object popup)
         {
-            _control.Popup = popup;
+            Control.Popup = popup;
         }
 
         public void GoBackContent()
@@ -125,7 +114,7 @@ namespace NavigationSample.ViewModels
                 var back = Stack.ContentStack.LastOrDefault();
                 if (back is { })
                 {
-                    _control.Content = back;
+                    Control.Content = back;
                 }
             }
         }
@@ -144,7 +133,7 @@ namespace NavigationSample.ViewModels
                 var back = Stack.DialogStack.LastOrDefault();
                 if (back is { })
                 {
-                    _control.Dialog = back;
+                    Control.Dialog = back;
                 }
             }
         }

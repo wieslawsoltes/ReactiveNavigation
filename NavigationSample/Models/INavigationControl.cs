@@ -4,6 +4,7 @@ namespace NavigationSample.Models
 {
     public interface INavigationControl
     {
+        INavigationManager Manager { get; set; }
         bool IsContentEnabled { get; set; }
         bool IsDialogEnabled { get; set; }
         object Content { get; set; }

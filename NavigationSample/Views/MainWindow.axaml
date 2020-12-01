@@ -21,7 +21,7 @@
     </Design.DataContext>
     <Panel Margin="{Binding #MainWindow.OffScreenMargin}">
         <Panel Margin="{Binding #MainWindow.WindowDecorationMargin}">
-            <c:NavigationControl DataContext="{Binding Navigation.Control}"
+            <c:NavigationControl DataContext="{Binding Control}"
                                  IsContentEnabled="{Binding IsContentEnabled}"
                                  IsDialogEnabled="{Binding IsDialogEnabled}"
                                  Content="{Binding Content}"

@@ -8,6 +8,7 @@ namespace NavigationSample.ViewModels
 {
     public class NavigationControlViewModel : ReactiveObject, INavigationControl
     {
+        private INavigationManager _manager;
         private bool _isContentEnabled;
         private bool _isDialogEnabled;
         private object _content;
@@ -17,7 +18,7 @@ namespace NavigationSample.ViewModels
         private object _dialog;
         private object _popup;
 
-        public NavigationControlViewModel(INavigationManager navigationManager)
+        public NavigationControlViewModel()
         {
             this.WhenAnyValue(
                     x => x.Dialog,
@@ -30,17 +31,22 @@ namespace NavigationSample.ViewModels
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .Subscribe(x => IsDialogEnabled = x is null);
 
-            CloseContentCommand = ReactiveCommand.Create<object>(x => navigationManager.CloseContent());
+            CloseContentCommand = ReactiveCommand.Create<object>(x => _manager?.CloseContent());
 
-            CloseLeftPaneCommand = ReactiveCommand.Create<object>(x => navigationManager.CloseLeftPane());
+            CloseLeftPaneCommand = ReactiveCommand.Create<object>(x => _manager?.CloseLeftPane());
 
-            CloseRightPaneCommand = ReactiveCommand.Create<object>(x => navigationManager.CloseRightPane());
+            CloseRightPaneCommand = ReactiveCommand.Create<object>(x => _manager?.CloseRightPane());
 
-            CloseStatusCommand = ReactiveCommand.Create<object>(x => navigationManager.CloseStatus());
+            CloseStatusCommand = ReactiveCommand.Create<object>(x => _manager?.CloseStatus());
 
-            CloseDialogCommand = ReactiveCommand.Create<object>(x => navigationManager.CloseDialog());
+            CloseDialogCommand = ReactiveCommand.Create<object>(x => _manager?.CloseDialog());
 
-            ClosePopupCommand = ReactiveCommand.Create<object>(x => navigationManager.ClosePopup());
+            ClosePopupCommand = ReactiveCommand.Create<object>(x => _manager?.ClosePopup());
+        }
+        public INavigationManager Manager
+        {
+            get => _manager;
+            set => this.RaiseAndSetIfChanged(ref _manager, value);
         }
 
         public bool IsContentEnabled
