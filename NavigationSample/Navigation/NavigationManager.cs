@@ -5,11 +5,10 @@ using System.Windows.Input;
 using ReactiveUI;
 using NavigationSample.Models;
 using System.Reactive.Linq;
-using DynamicData;
 
 namespace NavigationSample.ViewModels
 {
-    public class NavigationManager : ReactiveObject, INavigationControl
+    public class NavigationManager : ReactiveObject, INavigationManager
     {
         public static NavigationManager Instance { get; private set; }
 
