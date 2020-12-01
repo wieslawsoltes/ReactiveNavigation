@@ -1,5 +1,6 @@
 ﻿using System.Windows.Input;
 using ReactiveUI;
+using NavigationSample.ViewModels.Navigation;
 
 namespace NavigationSample.ViewModels
 {

@@ -1,4 +1,4 @@
-namespace NavigationSample.Models
+namespace NavigationSample.Models.Navigation
 {
     public interface INavigationManager
     {

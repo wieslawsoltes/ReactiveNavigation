@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace NavigationSample.Models
+namespace NavigationSample.Models.Navigation
 {
     public interface INavigationStack
     {

@@ -1,6 +1,6 @@
 using System.Windows.Input;
 
-namespace NavigationSample.Models
+namespace NavigationSample.Models.Navigation
 {
     public interface INavigationControl
     {

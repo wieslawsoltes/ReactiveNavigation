@@ -1,10 +1,10 @@
 using System.Collections.ObjectModel;
 using System;
 using ReactiveUI;
-using NavigationSample.Models;
+using NavigationSample.Models.Navigation;
 using System.Reactive.Linq;
 
-namespace NavigationSample.ViewModels
+namespace NavigationSample.ViewModels.Navigation
 {
     public class NavigationStackViewModel : ReactiveObject, INavigationStack
     {

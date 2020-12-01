@@ -1,4 +1,5 @@
-﻿using NavigationSample.Models;
+﻿using NavigationSample.Models.Navigation;
+using NavigationSample.ViewModels.Navigation;
 
 namespace NavigationSample.ViewModels
 {
