@@ -21,7 +21,21 @@
     </Design.DataContext>
     <Panel Margin="{Binding #MainWindow.OffScreenMargin}">
         <Panel Margin="{Binding #MainWindow.WindowDecorationMargin}">
-            <c:NavigationControl DataContext="{Binding Navigation}"/>
+            <c:NavigationControl DataContext="{Binding Navigation}"
+                                 IsContentEnabled="{Binding IsContentEnabled}"
+                                 IsDialogEnabled="{Binding IsDialogEnabled}"
+                                 Content="{Binding Content}"
+                                 LeftPane="{Binding LeftPane}"
+                                 RightPane="{Binding RightPane}"
+                                 Status="{Binding Status}"
+                                 Dialog="{Binding Dialog}"
+                                 Popup="{Binding Popup}"
+                                 CloseContentCommand="{Binding CloseContentCommand}"
+                                 CloseLeftPaneCommand="{Binding CloseLeftPaneCommand}"
+                                 CloseRightPaneCommand="{Binding CloseRightPaneCommand}"
+                                 CloseStatusCommand="{Binding CloseStatusCommand}"
+                                 CloseDialogCommand="{Binding CloseDialogCommand}"
+                                 ClosePopupCommand="{Binding ClosePopupCommand}"/>
         </Panel>
     </Panel>
 </Window>

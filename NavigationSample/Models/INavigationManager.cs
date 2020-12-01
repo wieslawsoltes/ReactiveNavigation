@@ -1,6 +1,6 @@
 namespace NavigationSample.Models
 {
-    public interface INavigationManager : INavigationControl, INavigationStack
+    public interface INavigationManager
     {
         void CloseContent();
         void CloseLeftPane();

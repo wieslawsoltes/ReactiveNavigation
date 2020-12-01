@@ -8,7 +8,7 @@ using System.Reactive.Linq;
 
 namespace NavigationSample.ViewModels
 {
-    public class NavigationManager : ReactiveObject, INavigationManager
+    public class NavigationManager : ReactiveObject, INavigationManager, INavigationControl, INavigationStack
     {
         public static NavigationManager Instance { get; private set; }
 

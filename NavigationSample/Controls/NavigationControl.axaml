@@ -3,8 +3,7 @@
         xmlns:i="using:Avalonia.Xaml.Interactivity"
         xmlns:ia="using:Avalonia.Xaml.Interactions.Core"
         xmlns:c="using:NavigationSample.Controls"
-        xmlns:m="using:NavigationSample.Models"
-        x:DataType="m:INavigationControl" x:CompileBindings="True">
+        xmlns:m="using:NavigationSample.Models">
     <Styles.Resources>
         <SolidColorBrush x:Key="DialogBackground" Color="#FFFFFF" />
         <SolidColorBrush x:Key="DialogOverlayColor" Color="#7F7A7A7A" />
@@ -21,25 +20,25 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel x:Name="PART_MainPanel">
-                    <DockPanel x:Name="PART_MainDockPanel" IsEnabled="{Binding IsContentEnabled}">
-                        <Panel x:Name="PART_LeftPanePanel" DockPanel.Dock="Left" IsVisible="{Binding !!LeftPane}">
-                            <ContentControl Content="{Binding LeftPane}"/>
+                    <DockPanel x:Name="PART_MainDockPanel" IsEnabled="{TemplateBinding IsContentEnabled}">
+                        <Panel x:Name="PART_LeftPanePanel" DockPanel.Dock="Left" IsVisible="{TemplateBinding LeftPane, Converter={x:Static ObjectConverters.IsNotNull}}">
+                            <ContentControl Content="{TemplateBinding LeftPane}"/>
                         </Panel>
-                        <Panel x:Name="PART_RightPanePanel" DockPanel.Dock="Right" IsVisible="{Binding !!RightPane}">
-                            <ContentControl Content="{Binding RightPane}"/>
+                        <Panel x:Name="PART_RightPanePanel" DockPanel.Dock="Right" IsVisible="{TemplateBinding RightPane, Converter={x:Static ObjectConverters.IsNotNull}}">
+                            <ContentControl Content="{TemplateBinding RightPane}"/>
                         </Panel>
-                        <Panel x:Name="PART_StatusPanel" DockPanel.Dock="Bottom" IsVisible="{Binding !!Status}">
-                            <ContentControl Content="{Binding Status}"/>
+                        <Panel x:Name="PART_StatusPanel" DockPanel.Dock="Bottom" IsVisible="{TemplateBinding Status, Converter={x:Static ObjectConverters.IsNotNull}}">
+                            <ContentControl Content="{TemplateBinding Status}"/>
                         </Panel>
-                        <Panel x:Name="PART_ContentPanel" IsVisible="{Binding !!Content}">
-                            <ContentControl Content="{Binding Content}"/>
+                        <Panel x:Name="PART_ContentPanel" IsVisible="{TemplateBinding Content, Converter={x:Static ObjectConverters.IsNotNull}}">
+                            <ContentControl Content="{TemplateBinding Content}"/>
                         </Panel>
                     </DockPanel>
-                    <Panel x:Name="PART_DialogPanel" IsEnabled="{Binding IsDialogEnabled}" IsVisible="{Binding !!Dialog}">
+                    <Panel x:Name="PART_DialogPanel" IsEnabled="{TemplateBinding IsDialogEnabled}" IsVisible="{TemplateBinding Dialog, Converter={x:Static ObjectConverters.IsNotNull}}">
                         <Panel x:Name="PART_OverlayDialogPanel" Background="{DynamicResource PopupOverlayColor}">
                             <i:Interaction.Behaviors>
                                 <ia:EventTriggerBehavior EventName="PointerPressed">
-                                    <ia:InvokeCommandAction Command="{Binding CloseDialogCommand}" CommandParameter="{Binding Dialog}" />
+                                    <ia:InvokeCommandAction Command="{TemplateBinding CloseDialogCommand}" CommandParameter="{TemplateBinding Dialog}" />
                                 </ia:EventTriggerBehavior>
                             </i:Interaction.Behaviors>
                         </Panel>
@@ -48,14 +47,14 @@
                                     Background="{DynamicResource DialogBackground}"
                                     BoxShadow="{DynamicResource DialogBoxShadow}"
                                     CornerRadius="{DynamicResource DialogCornerRadius}"/>
-                            <ContentControl Content="{Binding Dialog}"/>
+                            <ContentControl Content="{TemplateBinding Dialog}"/>
                         </Panel>
                     </Panel>
-                    <Panel x:Name="PART_PopupPanel" IsVisible="{Binding !!Popup}">
+                    <Panel x:Name="PART_PopupPanel" IsVisible="{TemplateBinding Popup, Converter={x:Static ObjectConverters.IsNotNull}}">
                         <Panel x:Name="PART_OverlayPopupPanel" Background="{DynamicResource PopupOverlayColor}">
                             <i:Interaction.Behaviors>
                                 <ia:EventTriggerBehavior EventName="PointerPressed">
-                                    <ia:InvokeCommandAction Command="{Binding ClosePopupCommand}" CommandParameter="{Binding Popup}" />
+                                    <ia:InvokeCommandAction Command="{TemplateBinding ClosePopupCommand}" CommandParameter="{TemplateBinding Popup}" />
                                 </ia:EventTriggerBehavior>
                             </i:Interaction.Behaviors>
                         </Panel>
@@ -64,7 +63,7 @@
                                     Background="{DynamicResource PopupBackground}"
                                     BoxShadow="{DynamicResource PopupBoxShadow}"
                                     CornerRadius="{DynamicResource PopupCornerRadius}"/>
-                            <ContentControl Content="{Binding Popup}"/>
+                            <ContentControl Content="{TemplateBinding Popup}"/>
                         </Panel>
                     </Panel>
                 </Panel>
