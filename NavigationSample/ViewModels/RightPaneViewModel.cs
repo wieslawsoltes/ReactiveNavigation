@@ -10,13 +10,13 @@ namespace NavigationSample.ViewModels
             ToggleStatusCommand = ReactiveCommand.Create(
                 () => 
                 {
-                    if (NavigationManager.Instance.Status is { })
+                    if (NavigationManagerViewModel.Instance.Control.Status is { })
                     {
-                        NavigationManager.Instance.CloseStatus();
+                        NavigationManagerViewModel.Instance.CloseStatus();
                     }
                     else
                     {
-                        NavigationManager.Instance.NavigateStatus(new StatusViewModel());
+                        NavigationManagerViewModel.Instance.NavigateStatus(new StatusViewModel());
                     }
                 });
         }

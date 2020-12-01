@@ -8,37 +8,37 @@ namespace NavigationSample.ViewModels
         public LeftPaneViewModel()
         {
             GoBackContentCommand = ReactiveCommand.Create(
-                () => NavigationManager.Instance.GoBackContent(),
-                NavigationManager.Instance.WhenAnyValue(x => x.CanContentNavigateBack));
+                () => NavigationManagerViewModel.Instance.GoBackContent(),
+                NavigationManagerViewModel.Instance.WhenAnyValue(x => x.Stack.CanContentNavigateBack));
 
             GoBackDialogCommand = ReactiveCommand.Create(
-                () => NavigationManager.Instance.GoBackDialog(),
-                NavigationManager.Instance.WhenAnyValue(x => x.CanDialogNavigateBack));
+                () => NavigationManagerViewModel.Instance.GoBackDialog(),
+                NavigationManagerViewModel.Instance.WhenAnyValue(x => x.Stack.CanDialogNavigateBack));
 
             HomeCommand = ReactiveCommand.Create(
-                () => NavigationManager.Instance.NavigateContent(new HomeViewModel()));
+                () => NavigationManagerViewModel.Instance.NavigateContent(new HomeViewModel()));
         
             SettingsCommand = ReactiveCommand.Create(
-                () => NavigationManager.Instance.NavigateContent(new SettingsViewModel()));
+                () => NavigationManagerViewModel.Instance.NavigateContent(new SettingsViewModel()));
             
             ToggleRightPaneCommand = ReactiveCommand.Create(
                 () => 
                 {
-                    if (NavigationManager.Instance.RightPane is { })
+                    if (NavigationManagerViewModel.Instance.Control.RightPane is { })
                     {
-                        NavigationManager.Instance.CloseRightPane();
+                        NavigationManagerViewModel.Instance.CloseRightPane();
                     }
                     else
                     {
-                        NavigationManager.Instance.NavigateRightPane(new RightPaneViewModel());
+                        NavigationManagerViewModel.Instance.NavigateRightPane(new RightPaneViewModel());
                     }
                 });
 
             DialogCommand = ReactiveCommand.Create(
-                () => NavigationManager.Instance.NavigateDialog(new DialogViewModel()));
+                () => NavigationManagerViewModel.Instance.NavigateDialog(new DialogViewModel()));
 
             PopupCommand = ReactiveCommand.Create(
-                () => NavigationManager.Instance.NavigatePopup(new PopupViewModel()));
+                () => NavigationManagerViewModel.Instance.NavigatePopup(new PopupViewModel()));
         }
 
         public ICommand GoBackContentCommand { get; }

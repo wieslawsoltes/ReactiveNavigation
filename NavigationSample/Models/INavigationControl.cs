@@ -4,14 +4,14 @@ namespace NavigationSample.Models
 {
     public interface INavigationControl
     {
-        bool IsContentEnabled { get; }
-        bool IsDialogEnabled { get; }
-        object Content { get; }
-        object LeftPane { get; }
-        object RightPane { get; }
-        object Status { get; }
-        object Dialog { get; }
-        object Popup { get; }
+        bool IsContentEnabled { get; set; }
+        bool IsDialogEnabled { get; set; }
+        object Content { get; set; }
+        object LeftPane { get; set; }
+        object RightPane { get; set; }
+        object Status { get; set; }
+        object Dialog { get; set; }
+        object Popup { get; set; }
         ICommand CloseContentCommand { get; }
         ICommand CloseLeftPaneCommand { get; }
         ICommand CloseRightPaneCommand { get; }
