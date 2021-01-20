@@ -38,7 +38,7 @@
                         <Panel x:Name="PART_OverlayDialogPanel" Background="{DynamicResource PopupOverlayColor}">
                             <i:Interaction.Behaviors>
                                 <ia:EventTriggerBehavior EventName="PointerPressed">
-                                    <ia:InvokeCommandAction Command="{TemplateBinding CloseDialogCommand}" CommandParameter="{TemplateBinding Dialog}" />
+                                    <ia:InvokeCommandAction Command="{Binding CloseDialogCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding Dialog, RelativeSource={RelativeSource TemplatedParent}}" />
                                 </ia:EventTriggerBehavior>
                             </i:Interaction.Behaviors>
                         </Panel>
@@ -54,7 +54,7 @@
                         <Panel x:Name="PART_OverlayPopupPanel" Background="{DynamicResource PopupOverlayColor}">
                             <i:Interaction.Behaviors>
                                 <ia:EventTriggerBehavior EventName="PointerPressed">
-                                    <ia:InvokeCommandAction Command="{TemplateBinding ClosePopupCommand}" CommandParameter="{TemplateBinding Popup}" />
+                                    <ia:InvokeCommandAction Command="{Binding ClosePopupCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding Popup, RelativeSource={RelativeSource TemplatedParent}}" />
                                 </ia:EventTriggerBehavior>
                             </i:Interaction.Behaviors>
                         </Panel>
