@@ -3,7 +3,7 @@
     <OutputType>Library</OutputType>
     <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
     <IsPackable>True</IsPackable>
-    <AvaloniaVersion>0.10.18</AvaloniaVersion>
+    <AvaloniaVersion>11.0.0-preview2</AvaloniaVersion>
   </PropertyGroup>
   <PropertyGroup>
     <AnalysisLevel>latest</AnalysisLevel>
