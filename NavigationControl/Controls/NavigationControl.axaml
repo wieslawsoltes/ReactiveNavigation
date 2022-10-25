@@ -1,9 +1,8 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:i="using:Avalonia.Xaml.Interactivity"
-        xmlns:ia="using:Avalonia.Xaml.Interactions.Core"
-        xmlns:c="using:NavigationSample.Controls"
-        xmlns:m="using:NavigationSample.Models">
+        xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+        xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+        xmlns:c="clr-namespace:NavigationControl.Controls;assembly=NavigationControl">
     <Styles.Resources>
         <SolidColorBrush x:Key="DialogBackground" Color="#FFFFFF" />
         <SolidColorBrush x:Key="DialogOverlayColor" Color="#7F7A7A7A" />

@@ -1,6 +1,5 @@
-﻿namespace NavigationSample.ViewModels
+﻿namespace NavigationSample.ViewModels;
+
+public class HomeViewModel : ViewModelBase
 {
-    public class HomeViewModel : ViewModelBase
-    {
-    }
 }

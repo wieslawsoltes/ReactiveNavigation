@@ -6,7 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:StatusViewModel" x:CompileBindings="True"
              x:Class="NavigationSample.Views.StatusView">
-    <Panel Background="Gray">
-        <TextBlock Text="Status" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-    </Panel>
+  <Panel Background="Gray">
+    <TextBlock Text="Status" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right" />
+  </Panel>
 </UserControl>

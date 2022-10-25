@@ -1,27 +1,26 @@
 ﻿using System.Windows.Input;
+using NavigationControl.ViewModels.Navigation;
 using ReactiveUI;
-using NavigationSample.ViewModels.Navigation;
 
-namespace NavigationSample.ViewModels
+namespace NavigationSample.ViewModels;
+
+public class RightPaneViewModel : ViewModelBase
 {
-    public class RightPaneViewModel : ViewModelBase
+    public RightPaneViewModel()
     {
-        public RightPaneViewModel()
-        {
-            ToggleStatusCommand = ReactiveCommand.Create(
-                () => 
+        ToggleStatusCommand = ReactiveCommand.Create(
+            () => 
+            {
+                if (NavigationManagerViewModel.Instance.Control.Status is { })
                 {
-                    if (NavigationManagerViewModel.Instance.Control.Status is { })
-                    {
-                        NavigationManagerViewModel.Instance.CloseStatus();
-                    }
-                    else
-                    {
-                        NavigationManagerViewModel.Instance.NavigateStatus(new StatusViewModel());
-                    }
-                });
-        }
-
-        public ICommand ToggleStatusCommand { get; }
+                    NavigationManagerViewModel.Instance.CloseStatus();
+                }
+                else
+                {
+                    NavigationManagerViewModel.Instance.NavigateStatus(new StatusViewModel());
+                }
+            });
     }
+
+    public ICommand ToggleStatusCommand { get; }
 }

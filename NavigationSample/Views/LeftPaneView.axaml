@@ -6,15 +6,15 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:LeftPaneViewModel" x:CompileBindings="True"
              x:Class="NavigationSample.Views.LeftPaneView">
-    <Panel Background="LightGray" MinWidth="200">
-        <StackPanel>
-            <Button Content="GoBackContent" Command="{Binding GoBackContentCommand}" Margin="4" HorizontalAlignment="Stretch"/>
-            <Button Content="GoBackDialog" Command="{Binding GoBackDialogCommand}" Margin="4" HorizontalAlignment="Stretch"/>
-            <Button Content="Home" Command="{Binding HomeCommand}" Margin="4" HorizontalAlignment="Stretch"/>
-            <Button Content="Settings" Command="{Binding SettingsCommand}" Margin="4" HorizontalAlignment="Stretch"/>
-            <Button Content="Right Pane" Command="{Binding ToggleRightPaneCommand}" Margin="4" HorizontalAlignment="Stretch"/>
-            <Button Content="Dialog" Command="{Binding DialogCommand}" Margin="4" HorizontalAlignment="Stretch"/>
-            <Button Content="Popup" Command="{Binding PopupCommand}" Margin="4" HorizontalAlignment="Stretch"/>
-        </StackPanel>
-    </Panel>
+  <Panel Background="LightGray" MinWidth="200">
+    <StackPanel>
+      <Button Content="GoBackContent" Command="{Binding GoBackContentCommand}" Margin="4" HorizontalAlignment="Stretch" />
+      <Button Content="GoBackDialog" Command="{Binding GoBackDialogCommand}" Margin="4" HorizontalAlignment="Stretch" />
+      <Button Content="Home" Command="{Binding HomeCommand}" Margin="4" HorizontalAlignment="Stretch" />
+      <Button Content="Settings" Command="{Binding SettingsCommand}" Margin="4" HorizontalAlignment="Stretch" />
+      <Button Content="Right Pane" Command="{Binding ToggleRightPaneCommand}" Margin="4" HorizontalAlignment="Stretch" />
+      <Button Content="Dialog" Command="{Binding DialogCommand}" Margin="4" HorizontalAlignment="Stretch" />
+      <Button Content="Popup" Command="{Binding PopupCommand}" Margin="4" HorizontalAlignment="Stretch" />
+    </StackPanel>
+  </Panel>
 </UserControl>

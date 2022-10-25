@@ -6,7 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:SettingsViewModel" x:CompileBindings="True"
              x:Class="NavigationSample.Views.SettingsView">
-    <Panel>
-        <TextBlock Text="Settings" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-    </Panel>
+  <Panel>
+    <TextBlock Text="Settings" VerticalAlignment="Center" HorizontalAlignment="Center" />
+  </Panel>
 </UserControl>

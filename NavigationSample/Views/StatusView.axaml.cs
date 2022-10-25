@@ -1,18 +1,17 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace NavigationSample.Views
-{
-    public class StatusView : UserControl
-    {
-        public StatusView()
-        {
-            InitializeComponent();
-        }
+namespace NavigationSample.Views;
 
-        private void InitializeComponent()
-        {
-            AvaloniaXamlLoader.Load(this);
-        }
+public class StatusView : UserControl
+{
+    public StatusView()
+    {
+        InitializeComponent();
+    }
+
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
     }
 }

@@ -1,59 +1,58 @@
 ﻿using System.Windows.Input;
+using NavigationControl.ViewModels.Navigation;
 using ReactiveUI;
-using NavigationSample.ViewModels.Navigation;
 
-namespace NavigationSample.ViewModels
+namespace NavigationSample.ViewModels;
+
+public class LeftPaneViewModel : ViewModelBase
 {
-    public class LeftPaneViewModel : ViewModelBase
+    public LeftPaneViewModel()
     {
-        public LeftPaneViewModel()
-        {
-            GoBackContentCommand = ReactiveCommand.Create(
-                () => NavigationManagerViewModel.Instance.GoBackContent(),
-                NavigationManagerViewModel.Instance.WhenAnyValue(x => x.Stack.CanContentNavigateBack));
+        GoBackContentCommand = ReactiveCommand.Create(
+            () => NavigationManagerViewModel.Instance.GoBackContent(),
+            NavigationManagerViewModel.Instance.WhenAnyValue(x => x.Stack.CanContentNavigateBack));
 
-            GoBackDialogCommand = ReactiveCommand.Create(
-                () => NavigationManagerViewModel.Instance.GoBackDialog(),
-                NavigationManagerViewModel.Instance.WhenAnyValue(x => x.Stack.CanDialogNavigateBack));
+        GoBackDialogCommand = ReactiveCommand.Create(
+            () => NavigationManagerViewModel.Instance.GoBackDialog(),
+            NavigationManagerViewModel.Instance.WhenAnyValue(x => x.Stack.CanDialogNavigateBack));
 
-            HomeCommand = ReactiveCommand.Create(
-                () => NavigationManagerViewModel.Instance.NavigateContent(new HomeViewModel()));
+        HomeCommand = ReactiveCommand.Create(
+            () => NavigationManagerViewModel.Instance.NavigateContent(new HomeViewModel()));
         
-            SettingsCommand = ReactiveCommand.Create(
-                () => NavigationManagerViewModel.Instance.NavigateContent(new SettingsViewModel()));
+        SettingsCommand = ReactiveCommand.Create(
+            () => NavigationManagerViewModel.Instance.NavigateContent(new SettingsViewModel()));
             
-            ToggleRightPaneCommand = ReactiveCommand.Create(
-                () => 
+        ToggleRightPaneCommand = ReactiveCommand.Create(
+            () => 
+            {
+                if (NavigationManagerViewModel.Instance.Control.RightPane is { })
                 {
-                    if (NavigationManagerViewModel.Instance.Control.RightPane is { })
-                    {
-                        NavigationManagerViewModel.Instance.CloseRightPane();
-                    }
-                    else
-                    {
-                        NavigationManagerViewModel.Instance.NavigateRightPane(new RightPaneViewModel());
-                    }
-                });
+                    NavigationManagerViewModel.Instance.CloseRightPane();
+                }
+                else
+                {
+                    NavigationManagerViewModel.Instance.NavigateRightPane(new RightPaneViewModel());
+                }
+            });
 
-            DialogCommand = ReactiveCommand.Create(
-                () => NavigationManagerViewModel.Instance.NavigateDialog(new DialogViewModel()));
+        DialogCommand = ReactiveCommand.Create(
+            () => NavigationManagerViewModel.Instance.NavigateDialog(new DialogViewModel()));
 
-            PopupCommand = ReactiveCommand.Create(
-                () => NavigationManagerViewModel.Instance.NavigatePopup(new PopupViewModel()));
-        }
-
-        public ICommand GoBackContentCommand { get; }
-        
-        public ICommand GoBackDialogCommand { get; }
-        
-        public ICommand HomeCommand { get; }
-        
-        public ICommand SettingsCommand { get; }
-
-        public ICommand ToggleRightPaneCommand { get; }
-    
-        public ICommand DialogCommand { get; }
-
-        public ICommand PopupCommand { get; }
+        PopupCommand = ReactiveCommand.Create(
+            () => NavigationManagerViewModel.Instance.NavigatePopup(new PopupViewModel()));
     }
+
+    public ICommand GoBackContentCommand { get; }
+        
+    public ICommand GoBackDialogCommand { get; }
+        
+    public ICommand HomeCommand { get; }
+        
+    public ICommand SettingsCommand { get; }
+
+    public ICommand ToggleRightPaneCommand { get; }
+    
+    public ICommand DialogCommand { get; }
+
+    public ICommand PopupCommand { get; }
 }

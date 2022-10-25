@@ -1,6 +1,5 @@
-﻿namespace NavigationSample.ViewModels
+﻿namespace NavigationSample.ViewModels;
+
+public class PopupViewModel : ViewModelBase
 {
-    public class PopupViewModel : ViewModelBase
-    {
-    }
 }

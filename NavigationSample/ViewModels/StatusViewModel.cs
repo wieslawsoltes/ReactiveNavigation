@@ -1,6 +1,5 @@
-﻿namespace NavigationSample.ViewModels
+﻿namespace NavigationSample.ViewModels;
+
+public class StatusViewModel : ViewModelBase
 {
-    public class StatusViewModel : ViewModelBase
-    {
-    }
 }

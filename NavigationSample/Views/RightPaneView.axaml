@@ -6,9 +6,9 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:RightPaneViewModel" x:CompileBindings="True"
              x:Class="NavigationSample.Views.RightPaneView">
-    <Panel Background="LightGray" MinWidth="150">
-        <StackPanel>
-            <Button Content="Status" Command="{Binding ToggleStatusCommand}" Margin="4" HorizontalAlignment="Stretch"/>
-        </StackPanel>
-    </Panel>
+  <Panel Background="LightGray" MinWidth="150">
+    <StackPanel>
+      <Button Content="Status" Command="{Binding ToggleStatusCommand}" Margin="4" HorizontalAlignment="Stretch" />
+    </StackPanel>
+  </Panel>
 </UserControl>
