@@ -1,0 +1,17 @@
+﻿using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
+
+namespace ReactiveNavigation.Sample.Views;
+
+public class SettingsView : UserControl
+{
+    public SettingsView()
+    {
+        InitializeComponent();
+    }
+
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
+}

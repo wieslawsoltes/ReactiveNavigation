@@ -1,0 +1,41 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:ReactiveNavigation.Sample.ViewModels;assembly=ReactiveNavigation.Sample"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:c="clr-namespace:ReactiveNavigation.Controls;assembly=ReactiveNavigation"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ReactiveNavigation.Sample.Views.MainWindow"
+        x:Name="MainWindow"
+        Background="#FFFFFFFF"
+        Foreground="{DynamicResource SystemBaseHighColor}"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="PreferSystemChrome"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="ReactiveNavigation.Sample"
+        WindowStartupLocation="CenterScreen"
+        Width="900" Height="600"
+        x:DataType="vm:MainWindowViewModel" x:CompileBindings="True">
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    <Panel Margin="{Binding #MainWindow.OffScreenMargin}">
+        <Panel Margin="{Binding #MainWindow.WindowDecorationMargin}">
+            <c:NavigationControl DataContext="{Binding Control}"
+                                 IsContentEnabled="{Binding IsContentEnabled}"
+                                 IsDialogEnabled="{Binding IsDialogEnabled}"
+                                 Content="{Binding Content}"
+                                 LeftPane="{Binding LeftPane}"
+                                 RightPane="{Binding RightPane}"
+                                 Status="{Binding Status}"
+                                 Dialog="{Binding Dialog}"
+                                 Popup="{Binding Popup}"
+                                 CloseContentCommand="{Binding CloseContentCommand}"
+                                 CloseLeftPaneCommand="{Binding CloseLeftPaneCommand}"
+                                 CloseRightPaneCommand="{Binding CloseRightPaneCommand}"
+                                 CloseStatusCommand="{Binding CloseStatusCommand}"
+                                 CloseDialogCommand="{Binding CloseDialogCommand}"
+                                 ClosePopupCommand="{Binding ClosePopupCommand}"/>
+        </Panel>
+    </Panel>
+</Window>
