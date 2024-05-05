@@ -6,7 +6,7 @@
         xmlns:c="clr-namespace:ReactiveNavigation.Controls;assembly=ReactiveNavigation"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ReactiveNavigation.Sample.Views.MainWindow"
-        x:Name="MainWindow"
+        x:Name="Main"
         Background="#FFFFFFFF"
         Foreground="{DynamicResource SystemBaseHighColor}"
         ExtendClientAreaToDecorationsHint="True"
@@ -19,8 +19,8 @@
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-    <Panel Margin="{Binding #MainWindow.OffScreenMargin}">
-        <Panel Margin="{Binding #MainWindow.WindowDecorationMargin}">
+    <Panel Margin="{Binding #Main.OffScreenMargin}">
+        <Panel Margin="{Binding #Main.WindowDecorationMargin}">
             <c:NavigationControl DataContext="{Binding Control}"
                                  IsContentEnabled="{Binding IsContentEnabled}"
                                  IsDialogEnabled="{Binding IsDialogEnabled}"

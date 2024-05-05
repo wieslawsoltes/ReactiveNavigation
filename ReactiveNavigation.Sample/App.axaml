@@ -6,7 +6,7 @@
     <local:ViewLocator />
   </Application.DataTemplates>
   <Application.Styles>
-    <StyleInclude Source="avares://Avalonia.Themes.Fluent/FluentLight.xaml" />
+    <FluentTheme />
     <StyleInclude Source="avares://ReactiveNavigation/Controls/NavigationControl.axaml" />
   </Application.Styles>
 </Application>

@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net6.0;net8.0</TargetFrameworks>
     <IsPackable>True</IsPackable>
-    <AvaloniaVersion>11.0.0-preview2</AvaloniaVersion>
+    <AvaloniaVersion>11.0.0</AvaloniaVersion>
   </PropertyGroup>
   <PropertyGroup>
     <AnalysisLevel>latest</AnalysisLevel>
@@ -11,10 +11,10 @@
   </PropertyGroup>
   <PropertyGroup>
     <VersionPrefix>11.0.0</VersionPrefix>
-    <VersionSuffix>preview2</VersionSuffix>
+    <VersionSuffix></VersionSuffix>
     <Authors>Wiesław Šoltés</Authors>
     <Company>Wiesław Šoltés</Company>
-    <Copyright>Copyright © Wiesław Šoltés 2022</Copyright>
+    <Copyright>Copyright © Wiesław Šoltés 2024</Copyright>
     <PackageProjectUrl>https://github.com/wieslawsoltes/ReactiveNavigation</PackageProjectUrl>
     <Description>An navigation control for Avalonia.</Description>
     <PackageId>ReactiveNavigation</PackageId>

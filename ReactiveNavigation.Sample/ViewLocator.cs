@@ -7,12 +7,10 @@ namespace ReactiveNavigation.Sample;
 
 public class ViewLocator : IDataTemplate
 {
-    public bool SupportsRecycling => false;
-
-    public IControl Build(object data)
+    public Control Build(object data)
     {
-        var name = data.GetType().FullName.Replace("ViewModel", "View");
-        var type = Type.GetType(name);
+        var name = data?.GetType().FullName?.Replace("ViewModel", "View");
+        var type = name is null ? null : Type.GetType(name);
 
         if (type != null)
         {

@@ -3,7 +3,7 @@ using Avalonia.Markup.Xaml;
 
 namespace ReactiveNavigation.Sample.Views;
 
-public class DialogView : UserControl
+public partial class DialogView : UserControl
 {
     public DialogView()
     {

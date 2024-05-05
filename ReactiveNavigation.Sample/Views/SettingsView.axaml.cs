@@ -3,7 +3,7 @@ using Avalonia.Markup.Xaml;
 
 namespace ReactiveNavigation.Sample.Views;
 
-public class SettingsView : UserControl
+public partial class SettingsView : UserControl
 {
     public SettingsView()
     {

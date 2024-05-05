@@ -3,7 +3,7 @@ using Avalonia.Markup.Xaml;
 
 namespace ReactiveNavigation.Sample.Views;
 
-public class HomeView : UserControl
+public partial class HomeView : UserControl
 {
     public HomeView()
     {

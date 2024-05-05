@@ -3,7 +3,7 @@ using Avalonia.Markup.Xaml;
 
 namespace ReactiveNavigation.Sample.Views;
 
-public class StatusView : UserControl
+public partial class StatusView : UserControl
 {
     public StatusView()
     {

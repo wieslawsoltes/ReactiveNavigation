@@ -3,7 +3,7 @@ using Avalonia.Markup.Xaml;
 
 namespace ReactiveNavigation.Sample.Views;
 
-public class PopupView : UserControl
+public partial class PopupView : UserControl
 {
     public PopupView()
     {

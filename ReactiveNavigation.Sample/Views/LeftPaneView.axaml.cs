@@ -3,7 +3,7 @@ using Avalonia.Markup.Xaml;
 
 namespace ReactiveNavigation.Sample.Views;
 
-public class LeftPaneView : UserControl
+public partial class LeftPaneView : UserControl
 {
     public LeftPaneView()
     {
