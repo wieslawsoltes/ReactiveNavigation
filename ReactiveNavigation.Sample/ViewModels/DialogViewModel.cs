@@ -9,8 +9,8 @@ public class DialogViewModel : ViewModelBase
     public DialogViewModel()
     {
         PopupCommand = ReactiveCommand.Create(
-            () => NavigationManagerViewModel.Instance.NavigatePopup(new PopupViewModel()));
+            () => NavigationManagerViewModel.Instance?.NavigatePopup(new PopupViewModel()));
     }
 
-    public  ICommand PopupCommand { get; }
+    public ICommand PopupCommand { get; }
 }

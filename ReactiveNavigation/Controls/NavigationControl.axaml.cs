@@ -6,46 +6,46 @@ namespace ReactiveNavigation.Controls;
 
 public class NavigationControl : TemplatedControl
 {
-    public static StyledProperty<bool> IsContentEnabledProperty =
+    public static readonly StyledProperty<bool> IsContentEnabledProperty =
         AvaloniaProperty.Register<NavigationControl, bool>(nameof(IsContentEnabled));
 
-    public static StyledProperty<bool> IsDialogEnabledProperty =
+    public static readonly StyledProperty<bool> IsDialogEnabledProperty =
         AvaloniaProperty.Register<NavigationControl, bool>(nameof(IsDialogEnabled));
 
-    public static StyledProperty<object> ContentProperty =
+    public static readonly StyledProperty<object> ContentProperty =
         AvaloniaProperty.Register<NavigationControl, object>(nameof(Content));
 
-    public static StyledProperty<object> LeftPaneProperty =
+    public static readonly StyledProperty<object> LeftPaneProperty =
         AvaloniaProperty.Register<NavigationControl, object>(nameof(LeftPane));
 
-    public static StyledProperty<object> RightPaneProperty =
+    public static readonly StyledProperty<object> RightPaneProperty =
         AvaloniaProperty.Register<NavigationControl, object>(nameof(RightPane));
 
-    public static StyledProperty<object> StatusProperty =
+    public static readonly StyledProperty<object> StatusProperty =
         AvaloniaProperty.Register<NavigationControl, object>(nameof(Status));
 
-    public static StyledProperty<object> DialogProperty =
+    public static readonly StyledProperty<object> DialogProperty =
         AvaloniaProperty.Register<NavigationControl, object>(nameof(Dialog));
 
-    public static StyledProperty<object> PopupProperty =
+    public static readonly StyledProperty<object> PopupProperty =
         AvaloniaProperty.Register<NavigationControl, object>(nameof(Popup));
 
-    public static StyledProperty<ICommand> CloseContentCommandProperty =
+    public static readonly StyledProperty<ICommand> CloseContentCommandProperty =
         AvaloniaProperty.Register<NavigationControl, ICommand>(nameof(CloseContentCommand));
 
-    public static StyledProperty<ICommand> CloseLeftPaneCommandProperty =
+    public static readonly StyledProperty<ICommand> CloseLeftPaneCommandProperty =
         AvaloniaProperty.Register<NavigationControl, ICommand>(nameof(CloseLeftPaneCommand));
 
-    public static StyledProperty<ICommand> CloseRightPaneCommandProperty =
+    public static readonly StyledProperty<ICommand> CloseRightPaneCommandProperty =
         AvaloniaProperty.Register<NavigationControl, ICommand>(nameof(CloseRightPaneCommand));
 
-    public static StyledProperty<ICommand> CloseStatusCommandProperty =
+    public static readonly StyledProperty<ICommand> CloseStatusCommandProperty =
         AvaloniaProperty.Register<NavigationControl, ICommand>(nameof(CloseStatusCommand));
 
-    public static StyledProperty<ICommand> CloseDialogCommandProperty =
+    public static readonly StyledProperty<ICommand> CloseDialogCommandProperty =
         AvaloniaProperty.Register<NavigationControl, ICommand>(nameof(CloseDialogCommand));
 
-    public static StyledProperty<ICommand> ClosePopupCommandProperty =
+    public static readonly StyledProperty<ICommand> ClosePopupCommandProperty =
         AvaloniaProperty.Register<NavigationControl, ICommand>(nameof(ClosePopupCommand));
 
     public bool IsContentEnabled

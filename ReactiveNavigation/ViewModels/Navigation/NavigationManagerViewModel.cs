@@ -6,7 +6,7 @@ namespace ReactiveNavigation.ViewModels.Navigation;
 
 public class NavigationManagerViewModel : ReactiveObject, INavigationManager
 {
-    public static NavigationManagerViewModel Instance { get; private set; }
+    public static NavigationManagerViewModel? Instance { get; private set; }
 
     public static void Register(INavigationControl control, INavigationStack stack)
     {
@@ -25,7 +25,13 @@ public class NavigationManagerViewModel : ReactiveObject, INavigationManager
 
     public void CloseContent()
     {
+        if (Control.Content == null)
+        {
+            return;
+        }
+
         Stack.ContentStack.Remove(Control.Content);
+
         Control.Content = null;
     }
 
@@ -46,7 +52,13 @@ public class NavigationManagerViewModel : ReactiveObject, INavigationManager
 
     public void CloseDialog()
     {
+        if (Control.Dialog == null)
+        {
+            return;
+        }
+
         Stack.DialogStack.Remove(Control.Dialog);
+
         Control.Dialog = null;
     }
 

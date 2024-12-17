@@ -14,14 +14,14 @@ public class MainWindowViewModel : ViewModelBase
         Manager = NavigationManagerViewModel.Instance;
         Control.Manager = NavigationManagerViewModel.Instance;
 
-        NavigationManagerViewModel.Instance.NavigateLeftPane(new LeftPaneViewModel());
-        NavigationManagerViewModel.Instance.NavigateContent(new HomeViewModel());
-        NavigationManagerViewModel.Instance.NavigateStatus(new StatusViewModel());
+        NavigationManagerViewModel.Instance?.NavigateLeftPane(new LeftPaneViewModel());
+        NavigationManagerViewModel.Instance?.NavigateContent(new HomeViewModel());
+        NavigationManagerViewModel.Instance?.NavigateStatus(new StatusViewModel());
     }
 
-    public INavigationControl Control { get; }
+    public INavigationControl? Control { get; }
 
-    public INavigationStack Stack { get; }
+    public INavigationStack? Stack { get; }
 
-    public INavigationManager Manager { get; }
+    public INavigationManager? Manager { get; }
 }

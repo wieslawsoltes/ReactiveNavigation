@@ -6,18 +6,8 @@ using ReactiveUI;
 
 namespace ReactiveNavigation.ViewModels.Navigation;
 
-public class NavigationControlViewModel : ReactiveObject, INavigationControl
+public partial class NavigationControlViewModel : ReactiveObject, INavigationControl
 {
-    private INavigationManager _manager;
-    private bool _isContentEnabled;
-    private bool _isDialogEnabled;
-    private object _content;
-    private object _lefPane;
-    private object _rightPane;
-    private object _status;
-    private object _dialog;
-    private object _popup;
-
     public NavigationControlViewModel()
     {
         this.WhenAnyValue(
@@ -31,72 +21,46 @@ public class NavigationControlViewModel : ReactiveObject, INavigationControl
             .ObserveOn(RxApp.MainThreadScheduler)
             .Subscribe(x => IsDialogEnabled = x is null);
 
-        CloseContentCommand = ReactiveCommand.Create<object>(x => _manager?.CloseContent());
+        CloseContentCommand = ReactiveCommand.Create<object>(_ => _manager?.CloseContent());
 
-        CloseLeftPaneCommand = ReactiveCommand.Create<object>(x => _manager?.CloseLeftPane());
+        CloseLeftPaneCommand = ReactiveCommand.Create<object>(_ => _manager?.CloseLeftPane());
 
-        CloseRightPaneCommand = ReactiveCommand.Create<object>(x => _manager?.CloseRightPane());
+        CloseRightPaneCommand = ReactiveCommand.Create<object>(_ => _manager?.CloseRightPane());
 
-        CloseStatusCommand = ReactiveCommand.Create<object>(x => _manager?.CloseStatus());
+        CloseStatusCommand = ReactiveCommand.Create<object>(_ => _manager?.CloseStatus());
 
-        CloseDialogCommand = ReactiveCommand.Create<object>(x => _manager?.CloseDialog());
+        CloseDialogCommand = ReactiveCommand.Create<object>(_ => _manager?.CloseDialog());
 
-        ClosePopupCommand = ReactiveCommand.Create<object>(x => _manager?.ClosePopup());
-    }
-    public INavigationManager Manager
-    {
-        get => _manager;
-        set => this.RaiseAndSetIfChanged(ref _manager, value);
+        ClosePopupCommand = ReactiveCommand.Create<object>(_ => _manager?.ClosePopup());
     }
 
-    public bool IsContentEnabled
-    {
-        get => _isContentEnabled;
-        set => this.RaiseAndSetIfChanged(ref _isContentEnabled, value);
-    }
-
-    public bool IsDialogEnabled
-    {
-        get => _isDialogEnabled;
-        set => this.RaiseAndSetIfChanged(ref _isDialogEnabled, value);
-    }
-
-    public object Content
-    {
-        get => _content;
-        set => this.RaiseAndSetIfChanged(ref _content, value);
-    }
-
-    public object LeftPane
-    {
-        get => _lefPane;
-        set => this.RaiseAndSetIfChanged(ref _lefPane, value);
-    }
-
-    public object RightPane
-    {
-        get => _rightPane;
-        set => this.RaiseAndSetIfChanged(ref _rightPane, value);
-    }
-
-    public object Status
-    {
-        get => _status;
-        set => this.RaiseAndSetIfChanged(ref _status, value);
-    }
-
-    public object Dialog
-    {
-        get => _dialog;
-        set => this.RaiseAndSetIfChanged(ref _dialog, value);
-    }
-
-    public object Popup
-    {
-        get => _popup;
-        set => this.RaiseAndSetIfChanged(ref _popup, value);
-    }
-
+    [Reactive]
+    public partial INavigationManager? Manager { get; set; }
+    
+    [Reactive]
+    public partial bool IsContentEnabled { get; set; }
+    
+    [Reactive]
+    public partial bool IsDialogEnabled { get; set; }
+    
+    [Reactive]
+    public partial object? Content { get; set; }
+    
+    [Reactive]
+    public partial object? LeftPane { get; set; }
+    
+    [Reactive]
+    public partial object? RightPane { get; set; }
+    
+    [Reactive]
+    public partial object? Status { get; set; }
+    
+    [Reactive]
+    public partial object? Dialog { get; set; }
+    
+    [Reactive]
+    public partial object? Popup { get; set; }
+    
     public ICommand CloseContentCommand { get; }
         
     public ICommand CloseLeftPaneCommand { get; }

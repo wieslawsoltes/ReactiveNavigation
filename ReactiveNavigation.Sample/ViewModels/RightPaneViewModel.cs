@@ -11,13 +11,13 @@ public class RightPaneViewModel : ViewModelBase
         ToggleStatusCommand = ReactiveCommand.Create(
             () => 
             {
-                if (NavigationManagerViewModel.Instance.Control.Status is { })
+                if (NavigationManagerViewModel.Instance?.Control.Status is { })
                 {
                     NavigationManagerViewModel.Instance.CloseStatus();
                 }
                 else
                 {
-                    NavigationManagerViewModel.Instance.NavigateStatus(new StatusViewModel());
+                    NavigationManagerViewModel.Instance?.NavigateStatus(new StatusViewModel());
                 }
             });
     }

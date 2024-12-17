@@ -6,13 +6,8 @@ using ReactiveUI;
 
 namespace ReactiveNavigation.ViewModels.Navigation;
 
-public class NavigationStackViewModel : ReactiveObject, INavigationStack
+public partial class NavigationStackViewModel : ReactiveObject, INavigationStack
 {
-    private ObservableCollection<object> _contentStack;
-    private ObservableCollection<object> _dialogStack;
-    private bool _canContentNavigateBack;
-    private bool _canDialogNavigateBack;
-
     public NavigationStackViewModel()
     {
         _contentStack = new ObservableCollection<object>();
@@ -27,28 +22,15 @@ public class NavigationStackViewModel : ReactiveObject, INavigationStack
             .Subscribe(_ => CanDialogNavigateBack = DialogStack.Count > 1);
     }
 
-    public ObservableCollection<object> ContentStack
-    {
-        get => _contentStack;
-        private set => this.RaiseAndSetIfChanged(ref _contentStack, value);
-    }
-
-    public ObservableCollection<object> DialogStack
-    {
-        get => _dialogStack;
-        private set => this.RaiseAndSetIfChanged(ref _dialogStack, value);
-    }
-
-    public bool CanContentNavigateBack
-    {
-        get => _canContentNavigateBack;
-        private set => this.RaiseAndSetIfChanged(ref _canContentNavigateBack, value);
-    }
-
-    public bool CanDialogNavigateBack
-    {
-        get => _canDialogNavigateBack;
-        private set => this.RaiseAndSetIfChanged(ref _canDialogNavigateBack, value);
-    }
- 
+    [Reactive]
+    public partial ObservableCollection<object> ContentStack { get; private set; }
+    
+    [Reactive]
+    public partial ObservableCollection<object> DialogStack { get; private set; }
+    
+    [Reactive]
+    public partial bool CanContentNavigateBack { get; private set; }
+    
+    [Reactive]
+    public partial bool CanDialogNavigateBack { get; private set; }
 }

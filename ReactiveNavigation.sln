@@ -7,6 +7,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveNavigation.Sample",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveNavigation", "ReactiveNavigation\ReactiveNavigation.csproj", "{0300D4E1-834A-4C2B-A22D-820B8F484915}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{AC119A9E-EFDE-4621-801A-FD40D6311543}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F37370A0-97C4-48FA-B712-045D55433069}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{F6FED803-17C8-478C-9A48-799A7A230AB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{A5693EA4-5242-4740-96A8-18929163E933}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,5 +43,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {35F94514-63C1-4827-B525-160DDBA8393D}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0300D4E1-834A-4C2B-A22D-820B8F484915} = {F37370A0-97C4-48FA-B712-045D55433069}
+		{EF1DC80F-1657-4211-B986-22815421C120} = {F6FED803-17C8-478C-9A48-799A7A230AB9}
 	EndGlobalSection
 EndGlobal

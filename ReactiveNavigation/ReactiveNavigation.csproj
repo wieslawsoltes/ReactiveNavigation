@@ -3,12 +3,21 @@
     <OutputType>Library</OutputType>
     <TargetFrameworks>netstandard2.0;net6.0;net8.0</TargetFrameworks>
     <IsPackable>True</IsPackable>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <Nullable>enable</Nullable>
     <AvaloniaVersion>11.0.0</AvaloniaVersion>
   </PropertyGroup>
+
   <PropertyGroup>
-    <AnalysisLevel>latest</AnalysisLevel>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>13</LangVersion>
+    <UseBackingFields>true</UseBackingFields>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
+  </PropertyGroup>
+
   <PropertyGroup>
     <VersionPrefix>11.0.0</VersionPrefix>
     <VersionSuffix></VersionSuffix>
@@ -21,12 +30,19 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>navigation;control;avalonia;avaloniaui</PackageTags>
   </PropertyGroup>
+  
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.0" />
+    <PackageReference Include="ReactiveGenerator" Version="0.9.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
+  
 </Project>
